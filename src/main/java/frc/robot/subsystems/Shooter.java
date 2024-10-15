@@ -4,14 +4,47 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
+
   /** Creates a new Shooter. */
-  public Shooter() {}
+  public final TalonFX top = new TalonFX(0);
+  public final TalonFX bottom = new TalonFX(1);
+
+  public Shooter() {
+    top.setInverted(false);
+    bottom.setInverted(true);
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+
+  public enum Speed {
+    FAST(1),
+    SLOW(0.5);
+
+    private Speed(double speed)
+    {
+      this.speed = speed;
+    }
+    public double speed;
+  }
+
+
+  public void setSpeed(Speed speed)
+  {
+    top.set(speed.speed);
+    bottom.set(speed.speed);
+  }
+
+  public void turnOff()
+  {
+    top.set(0);
+    bottom.set(0);
   }
 }
