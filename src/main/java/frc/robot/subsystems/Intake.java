@@ -4,14 +4,52 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+
 public class Intake extends SubsystemBase {
+
+  private TalonFX intakeMotor = new TalonFX(0);
+
   /** Creates a new Intake. */
-  public Intake() {}
+  public Intake() {
+    intakeMotor.setInverted(false);
+  }
+
 
   @Override
   public void periodic() {
+
     // This method will be called once per scheduler run
   }
+
+
+  public enum Speed{
+    FAST_IN(1),
+    FAST_OUT(-1),
+    SLOW_IN(.5),
+    SLOW_OUT(-.5);
+
+    private Speed(double speed)
+    {
+      this.speed = speed;
+
+    }
+
+    public double speed;
+  }
+
+  public void setSpeed(Speed speed)
+  {
+    intakeMotor.set(speed.speed);
+  }
+
+  public void off(){
+    intakeMotor.set(0);
+  }
+
+
+
 }
