@@ -27,10 +27,10 @@ public class Intake extends SubsystemBase {
 
 
   public enum Speed{
-    FAST_IN(1),
-    FAST_OUT(-1),
-    SLOW_IN(.5),
-    SLOW_OUT(-.5);
+    FAST_IN(-.5),
+    FAST_OUT(.5),
+    SLOW_IN(-.25),
+    SLOW_OUT(.25);
 
     private Speed(double speed)
     {

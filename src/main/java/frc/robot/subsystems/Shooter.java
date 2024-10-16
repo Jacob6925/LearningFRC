@@ -25,8 +25,8 @@ public class Shooter extends SubsystemBase {
   }
 
   public enum Speed {
-    FAST(1),
-    SLOW(0.5);
+    FAST(0.5),
+    SLOW(0.25);
 
     private Speed(double speed)
     {
