@@ -28,22 +28,18 @@ public class Shooter extends SubsystemBase {
     FAST(0.5),
     SLOW(0.25);
 
-    private Speed(double speed)
-    {
+    public double speed;
+    private Speed(double speed) {
       this.speed = speed;
     }
-    public double speed;
   }
 
-
-  public void setSpeed(Speed speed)
-  {
+  public void setSpeed(Speed speed) {
     top.set(speed.speed);
     bottom.set(speed.speed);
   }
 
-  public void turnOff()
-  {
+  public void turnOff() {
     top.set(0);
     bottom.set(0);
   }

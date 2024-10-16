@@ -10,21 +10,17 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Intake extends SubsystemBase {
-
-  private TalonFX intakeMotor = new TalonFX(0);
+  private final TalonFX intakeMotor = new TalonFX(0);
 
   /** Creates a new Intake. */
   public Intake() {
     intakeMotor.setInverted(false);
   }
 
-
   @Override
   public void periodic() {
-
     // This method will be called once per scheduler run
   }
-
 
   public enum Speed{
     FAST_IN(-.5),
@@ -32,24 +28,17 @@ public class Intake extends SubsystemBase {
     SLOW_IN(-.25),
     SLOW_OUT(.25);
 
-    private Speed(double speed)
-    {
-      this.speed = speed;
-
-    }
-
     public double speed;
+    private Speed(double speed) {
+      this.speed = speed;
+    }
   }
 
-  public void setSpeed(Speed speed)
-  {
+  public void setSpeed(Speed speed) {
     intakeMotor.set(speed.speed);
   }
 
-  public void off(){
+  public void off() {
     intakeMotor.set(0);
   }
-
-
-
 }

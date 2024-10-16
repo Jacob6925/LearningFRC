@@ -17,9 +17,8 @@ public class RobotContainer {
   // private final Joystick driver = new Joystick(0);
   private final Joystick operator = new Joystick(1);
 
-  private Intake intake;
-  private Shooter shooter;
-
+  private final Intake intake;
+  private final Shooter shooter;
 
   public RobotContainer() {
     configureBindings();
@@ -28,11 +27,9 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    
     new JoystickButton(operator, 0).onTrue(new ShooterCommand(shooter, Shooter.Speed.FAST));
     new JoystickButton(operator, 11).whileTrue(new IntakeCommand(intake, Intake.Speed.FAST_OUT));
-    new JoystickButton(operator, 12).whileTrue(new IntakeCommand(intake, Intake.Speed.FAST_IN));
-    
+    new JoystickButton(operator, 12).whileTrue(new IntakeCommand(intake, Intake.Speed.FAST_IN));    
   }
 
   public Command getAutonomousCommand() {

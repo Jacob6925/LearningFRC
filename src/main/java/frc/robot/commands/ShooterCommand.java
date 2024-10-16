@@ -13,16 +13,15 @@ public class ShooterCommand extends Command {
   private final Shooter shooter;
   /** Creates a new ShooterCommand. */
   public ShooterCommand(Shooter shooter, Shooter.Speed speed) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(shooter);
     this.speed = speed;
     this.shooter = shooter;
+    
+    addRequirements(shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() 
-  {
+  public void initialize() {
     this.shooter.setSpeed(speed);
   }
 
@@ -32,8 +31,7 @@ public class ShooterCommand extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) 
-  {
+  public void end(boolean interrupted) {
     shooter.turnOff();
   }
 

@@ -16,9 +16,6 @@ public class IntakeCommand extends Command {
   public IntakeCommand(Intake intake, Intake.Speed speed ) {
     this.speed = speed;
     this.intake = intake;
-    
-
-    // Use addRequirements() here to declare subsystem dependencies.
 
     addRequirements(intake);
   }
@@ -36,10 +33,8 @@ public class IntakeCommand extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
     intake.off();
   }
-  
 
   // Returns true when the command should end.
   @Override
