@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Shooter extends SubsystemBase {
 
   /** Creates a new Shooter. */
-  public final TalonFX top = new TalonFX(0);
-  public final TalonFX bottom = new TalonFX(1);
+  public final TalonFX top = new TalonFX(12);
+  public final TalonFX bottom = new TalonFX(13);
 
   public Shooter() {
-    top.setInverted(false);
-    bottom.setInverted(true);
+    top.setInverted(true);
+    bottom.setInverted(false);
   }
 
   @Override
@@ -25,7 +25,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public enum Speed {
-    FAST(0.5),
+    FAST(0.8),
     SLOW(0.25);
 
     public double speed;

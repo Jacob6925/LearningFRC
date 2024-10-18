@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class Intake extends SubsystemBase {
-  private final TalonFX intakeMotor = new TalonFX(0);
+  private final TalonFX intakeMotor = new TalonFX(14);
 
   /** Creates a new Intake. */
   public Intake() {
-    intakeMotor.setInverted(false);
+    intakeMotor.setInverted(true);
   }
 
   @Override

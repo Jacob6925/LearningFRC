@@ -21,15 +21,15 @@ public class RobotContainer {
   private final Shooter shooter;
 
   public RobotContainer() {
-    configureBindings();
     shooter = new Shooter();
     intake = new Intake();
+    configureBindings();
   }
 
   private void configureBindings() {
-    new JoystickButton(operator, 0).onTrue(new ShooterCommand(shooter, Shooter.Speed.FAST));
+    new JoystickButton(operator, 1).whileTrue(new ShooterCommand(shooter, Shooter.Speed.FAST));
     new JoystickButton(operator, 11).whileTrue(new IntakeCommand(intake, Intake.Speed.FAST_OUT));
-    new JoystickButton(operator, 12).whileTrue(new IntakeCommand(intake, Intake.Speed.FAST_IN));    
+    new JoystickButton(operator, 12).whileTrue(new IntakeCommand(intake, Intake.Speed.FAST_IN));
   }
 
   public Command getAutonomousCommand() {
