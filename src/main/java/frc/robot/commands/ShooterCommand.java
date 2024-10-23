@@ -5,14 +5,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Shooter;
-import frc.robot.subsystems.Shooter.Speed;
+import frc.robot.subsystems.ShooterSubsys;
+import frc.robot.subsystems.ShooterSubsys.Speed;
 
 public class ShooterCommand extends Command {
   private final Speed speed;
-  private final Shooter shooter;
+  private final ShooterSubsys shooter;
   /** Creates a new ShooterCommand. */
-  public ShooterCommand(Shooter shooter, Shooter.Speed speed) {
+  public ShooterCommand(ShooterSubsys shooter, ShooterSubsys.Speed speed) {
     this.speed = speed;
     this.shooter = shooter;
     

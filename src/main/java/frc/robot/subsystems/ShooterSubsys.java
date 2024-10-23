@@ -8,13 +8,15 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+public class ShooterSubsys extends SubsystemBase {
 
-public class Intake extends SubsystemBase {
-  private final TalonFX intakeMotor = new TalonFX(14);
+  /** Creates a new Shooter. */
+  public final TalonFX top = new TalonFX(12);
+  public final TalonFX bottom = new TalonFX(13);
 
-  /** Creates a new Intake. */
-  public Intake() {
-    intakeMotor.setInverted(true);
+  public ShooterSubsys() {
+    top.setInverted(true);
+    bottom.setInverted(false);
   }
 
   @Override
@@ -22,11 +24,10 @@ public class Intake extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public enum Speed{
-    FAST_IN(-.5),
-    FAST_OUT(.5),
-    SLOW_IN(-.25),
-    SLOW_OUT(.25);
+  public enum Speed {
+    FAST(0.8),
+    SLOW(0.25),
+    OFF(0);
 
     public double speed;
     private Speed(double speed) {
@@ -35,10 +36,12 @@ public class Intake extends SubsystemBase {
   }
 
   public void setSpeed(Speed speed) {
-    intakeMotor.set(speed.speed);
+    top.set(speed.speed);
+    bottom.set(speed.speed);
   }
 
-  public void off() {
-    intakeMotor.set(0);
+  public void turnOff() {
+    top.set(0);
+    bottom.set(0);
   }
 }

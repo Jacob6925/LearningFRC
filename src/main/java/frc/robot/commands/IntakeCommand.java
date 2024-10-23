@@ -5,15 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Intake.Speed;
+import frc.robot.subsystems.IntakeSubsys;
+import frc.robot.subsystems.IntakeSubsys.Speed;
 
 public class IntakeCommand extends Command {
   /** Creates a new IntakeCommand. */
   
   private final Speed speed;
-  private final Intake intake;
-  public IntakeCommand(Intake intake, Intake.Speed speed ) {
+  private final IntakeSubsys intake;
+  public IntakeCommand(IntakeSubsys intake, IntakeSubsys.Speed speed ) {
     this.speed = speed;
     this.intake = intake;
 
