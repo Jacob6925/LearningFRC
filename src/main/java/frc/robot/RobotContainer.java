@@ -5,6 +5,8 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -62,18 +64,15 @@ public class RobotContainer {
         s_Shooter.setSpeed(ShooterSubsys.Speed.OFF);
       })
     ));
+
+    NamedCommands.registerCommand("PickupNote", new SequentialCommandGroup(
+      new InstantCommand(() -> s_Intake.setSpeed(IntakeSubsys.Speed.SLOW_IN), s_Intake),
+      new WaitCommand(1),
+      new InstantCommand(() -> s_Intake.setSpeed(IntakeSubsys.Speed.OFF), s_Intake)
+    ));
   }
 
   public Command getAutonomousCommand() {
-    return new SequentialCommandGroup(
-      new InstantCommand(() -> s_Shooter.setSpeed(ShooterSubsys.Speed.FAST), s_Shooter),
-      new WaitCommand(1),
-      new InstantCommand(() -> s_Intake.setSpeed(IntakeSubsys.Speed.FAST_OUT), s_Intake),
-      new WaitCommand(1),
-      new InstantCommand(()-> {
-        s_Intake.setSpeed(IntakeSubsys.Speed.OFF);
-        s_Shooter.setSpeed(ShooterSubsys.Speed.OFF);
-      })
-    );
+    return new PathPlannerAuto("GetNote2");
   }
 }
